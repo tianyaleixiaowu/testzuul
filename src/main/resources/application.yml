@@ -1,0 +1,10 @@
+server:
+  port: 9000
+zuul:
+  routes:
+    api-1:
+      path: /user/**
+      url: ${user}
+    api-2:
+      path: /club/**
+      url: ${club}
