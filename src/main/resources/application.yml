@@ -8,11 +8,11 @@ spring:
     password: ${db_pass:root}
 zuul:
   routes:
-    api-1:
+    api-user:
       path: /user/**
       #url: ${user}
       serviceId: user
-    api-2:
+    api-club:
       path: /club/**
       #url: ${club}
       serviceId: club
