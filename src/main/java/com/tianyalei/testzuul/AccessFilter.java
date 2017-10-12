@@ -2,8 +2,10 @@ package com.tianyalei.testzuul;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
+import com.tianyalei.testzuul.service.RefreshRouteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,6 +15,8 @@ import java.io.PrintWriter;
 
 @Component
 public class AccessFilter extends ZuulFilter {
+    @Autowired
+    RefreshRouteService refreshRouteService;
 
     private static Logger log = LoggerFactory.getLogger(AccessFilter.class);
 
@@ -36,6 +40,17 @@ public class AccessFilter extends ZuulFilter {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
 
+        //判断如果是刷新配置的请求
+        String url = request.getRequestURI();
+        if ("/zuul/refresh".equals(url)) {
+            log.warn("刷新配置");
+            refreshRouteService.refreshRoute();
+            ctx.setSendZuulResponse(false);
+            ctx.setResponseStatusCode(200);
+            print("刷新成功");
+            return null;
+        }
+
         log.info("send {} request to {}", request.getMethod(), request.getRequestURL().toString());
 
         Object accessToken = request.getParameter("accessToken");
@@ -46,6 +61,7 @@ public class AccessFilter extends ZuulFilter {
             print("access token is empty");
             return null;
         }
+
         log.info("access token ok");
         return null;
     }
