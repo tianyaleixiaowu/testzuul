@@ -1,6 +1,5 @@
 package com.tianyalei.testzuul.fallback;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.netflix.zuul.filters.route.ZuulFallbackProvider;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -19,13 +18,10 @@ import java.nio.charset.Charset;
 @Component
 public class ClubServiceFallbackProvider implements ZuulFallbackProvider {
 
-    @Value("${zuul.routes.api-club.serviceId}")
-    private String SERVICEID;
-
 
     @Override
     public String getRoute() {
-        return SERVICEID;
+        return "club";
     }
 
     @Override

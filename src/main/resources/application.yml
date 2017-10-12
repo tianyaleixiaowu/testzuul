@@ -8,13 +8,13 @@ spring:
     password: ${MYSQL_PASS:Wu@0396110}
 zuul:
   ignored-services: "*"
-  routes:
-    api-user:
-      path: /user/**
-      serviceId: user
-    api-club:
-      path: /club/**
-      serviceId: club
+#  routes:
+#    api-user:
+#      path: /user/**
+#      serviceId: user
+#    api-club:
+#      path: /club/**
+#      serviceId: club
   host:
     maxTotalConnections: 200 #总连接数
     maxPerRouteConnections: 20 #每个路由连接数

@@ -40,17 +40,6 @@ public class AccessFilter extends ZuulFilter {
         RequestContext ctx = RequestContext.getCurrentContext();
         HttpServletRequest request = ctx.getRequest();
 
-        //判断如果是刷新配置的请求
-        String url = request.getRequestURI();
-        if ("/zuul/refresh".equals(url)) {
-            log.warn("刷新配置");
-            refreshRouteService.refreshRoute();
-            ctx.setSendZuulResponse(false);
-            ctx.setResponseStatusCode(200);
-            print("刷新成功");
-            return null;
-        }
-
         log.info("send {} request to {}", request.getMethod(), request.getRequestURL().toString());
 
         Object accessToken = request.getParameter("accessToken");
