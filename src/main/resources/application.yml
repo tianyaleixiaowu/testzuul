@@ -22,4 +22,4 @@ zuul:
 eureka:
   client:
     service-url:
-      defaultZone: http://${EUREKA_SERVER:localhost:10001}/eureka/
+      defaultZone: http://${EUREKA_SERVER:localhost:10011}/eureka/
