@@ -1,10 +1,22 @@
-server:
-  port: 9000
+spring:
+  application:
+    name: zuul
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/zuul
+    username: ${db_name:root}
+    password: ${db_pass:root}
 zuul:
   routes:
     api-1:
       path: /user/**
-      url: ${user}
+      #url: ${user}
+      serviceId: user
     api-2:
       path: /club/**
-      url: ${club}
+      #url: ${club}
+      serviceId: club
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${eureka_server_address:localhost}:10001/eureka/

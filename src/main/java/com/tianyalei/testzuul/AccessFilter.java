@@ -7,6 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 @Component
 public class AccessFilter extends ZuulFilter {
@@ -40,11 +43,23 @@ public class AccessFilter extends ZuulFilter {
             log.warn("access token is empty");
             ctx.setSendZuulResponse(false);
             ctx.setResponseStatusCode(401);
+            print("access token is empty");
             return null;
         }
         log.info("access token ok");
         return null;
     }
 
+
+    private void print(String s) {
+        HttpServletResponse response = RequestContext.getCurrentContext().getResponse();
+        response.setContentType("text/html; charset=utf-8");
+        try {
+            PrintWriter out = response.getWriter();
+            out.print(s);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
