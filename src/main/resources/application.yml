@@ -18,8 +18,11 @@ zuul:
   host:
     maxTotalConnections: 200 #总连接数
     maxPerRouteConnections: 20 #每个路由连接数
+    
   #prefix: /api  #为所有匹配增加前缀
 eureka:
   client:
     service-url:
       defaultZone: http://${EUREKA_SERVER:localhost:10011}/eureka/
+server:
+  port: 8080
