@@ -17,7 +17,8 @@ zuul:
 #      serviceId: club
   host:
     maxTotalConnections: 200 #总连接数
-    maxPerRouteConnections: 20 #每个路由连接数
+    maxPerRouteConnections: 20   #每个路由连接数
+  add-host-header: true
     
   #prefix: /api  #为所有匹配增加前缀
 eureka:
