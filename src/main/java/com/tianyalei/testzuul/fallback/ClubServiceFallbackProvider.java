@@ -18,7 +18,6 @@ import java.nio.charset.Charset;
 @Component
 public class ClubServiceFallbackProvider implements ZuulFallbackProvider {
 
-
     @Override
     public String getRoute() {
         return "club";

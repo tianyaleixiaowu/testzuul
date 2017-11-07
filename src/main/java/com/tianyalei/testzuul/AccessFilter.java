@@ -2,10 +2,8 @@ package com.tianyalei.testzuul;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
-import com.tianyalei.testzuul.service.RefreshRouteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,8 +13,6 @@ import java.io.PrintWriter;
 
 @Component
 public class AccessFilter extends ZuulFilter {
-    @Autowired
-    RefreshRouteService refreshRouteService;
 
     private static Logger log = LoggerFactory.getLogger(AccessFilter.class);
 

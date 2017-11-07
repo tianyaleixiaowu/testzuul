@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class CustomRouteLocator extends SimpleRouteLocator implements RefreshableRouteLocator {
 
-    public final static Logger logger = LoggerFactory.getLogger(CustomRouteLocator.class);
+    private final static Logger logger = LoggerFactory.getLogger(CustomRouteLocator.class);
 
     private JdbcTemplate jdbcTemplate;
 

@@ -1,11 +1,12 @@
 package com.tianyalei.testzuul.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.cloud.netflix.zuul.filters.ZuulProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import javax.annotation.Resource;
 
 /**
  * Created by wuweifeng on 2017/10/12.
@@ -13,12 +14,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 @Configuration
 public class CustomZuulConfig {
 
-    @Autowired
-    ZuulProperties zuulProperties;
-    @Autowired
-    ServerProperties server;
-    @Autowired
-    JdbcTemplate jdbcTemplate;
+    @Resource
+    private ZuulProperties zuulProperties;
+    @Resource
+    private ServerProperties server;
+    @Resource
+    private JdbcTemplate jdbcTemplate;
 
     @Bean
     public CustomRouteLocator routeLocator() {

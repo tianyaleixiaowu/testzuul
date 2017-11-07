@@ -1,13 +1,13 @@
 package com.tianyalei.testzuul.controller;
 
 import com.tianyalei.testzuul.service.RefreshRouteService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.netflix.zuul.web.ZuulHandlerMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.Map;
 
 /**
@@ -15,10 +15,10 @@ import java.util.Map;
  */
 @RestController
 public class RefreshController {
-    @Autowired
-    RefreshRouteService refreshRouteService;
-    @Autowired
-    ZuulHandlerMapping zuulHandlerMapping;
+    @Resource
+    private RefreshRouteService refreshRouteService;
+    @Resource
+    private ZuulHandlerMapping zuulHandlerMapping;
 
     @Value("${server.port}")
     private String port;

@@ -21,7 +21,6 @@ public class UserServiceFallbackProvider implements ZuulFallbackProvider {
     //@Value("${zuul.routes.api-user.serviceId}")
     //private String SERVICEID;
 
-
     @Override
     public String getRoute() {
         return "user";
