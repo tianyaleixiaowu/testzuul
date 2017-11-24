@@ -1,7 +1,6 @@
 package com.tianyalei.testzuul.controller;
 
 import com.tianyalei.testzuul.service.RefreshRouteService;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.netflix.zuul.web.ZuulHandlerMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,9 +19,6 @@ public class RefreshController {
     @Resource
     private ZuulHandlerMapping zuulHandlerMapping;
 
-    @Value("${server.port}")
-    private String port;
-
     @GetMapping("/refreshRoute")
     public String refresh() {
         refreshRouteService.refreshRoute();
@@ -36,8 +32,4 @@ public class RefreshController {
         return handlerMap;
     }
 
-    @RequestMapping("/index")
-    public Object index() {
-        return port;
-    }
 }
