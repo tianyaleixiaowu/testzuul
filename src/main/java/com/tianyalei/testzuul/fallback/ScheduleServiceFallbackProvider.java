@@ -16,11 +16,11 @@ import java.nio.charset.Charset;
  * Created by wuweifeng on 2017/10/12.
  */
 @Component
-public class ClubServiceFallbackProvider implements ZuulFallbackProvider {
+public class ScheduleServiceFallbackProvider implements ZuulFallbackProvider {
 
     @Override
     public String getRoute() {
-        return "club";
+        return "ec_server_scheduls";
     }
 
     @Override
@@ -48,7 +48,7 @@ public class ClubServiceFallbackProvider implements ZuulFallbackProvider {
 
             @Override
             public InputStream getBody() throws IOException {
-                return new ByteArrayInputStream("Service-club不可用".getBytes());
+                return new ByteArrayInputStream("Service-scheduls不可用".getBytes());
             }
 
             @Override

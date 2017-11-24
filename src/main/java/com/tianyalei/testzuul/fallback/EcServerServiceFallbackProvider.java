@@ -16,14 +16,11 @@ import java.nio.charset.Charset;
  * Created by wuweifeng on 2017/10/12.
  */
 @Component
-public class UserServiceFallbackProvider implements ZuulFallbackProvider {
-
-    //@Value("${zuul.routes.api-user.serviceId}")
-    //private String SERVICEID;
+public class EcServerServiceFallbackProvider implements ZuulFallbackProvider {
 
     @Override
     public String getRoute() {
-        return "user";
+        return "ec_server";
     }
 
     @Override
@@ -51,7 +48,7 @@ public class UserServiceFallbackProvider implements ZuulFallbackProvider {
 
             @Override
             public InputStream getBody() throws IOException {
-                return new ByteArrayInputStream("Service-user不可用".getBytes());
+                return new ByteArrayInputStream("Service-ec-server不可用".getBytes());
             }
 
             @Override
