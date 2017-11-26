@@ -48,7 +48,11 @@ public class ScheduleServiceFallbackProvider implements ZuulFallbackProvider {
 
             @Override
             public InputStream getBody() throws IOException {
-                return new ByteArrayInputStream("Service-scheduls不可用".getBytes());
+                return new ByteArrayInputStream(("Service-scheduls is gone away，please Contact wuweifeng to solve the" +
+                        " " +
+                        "problem")
+                        .getBytes
+                                ());
             }
 
             @Override

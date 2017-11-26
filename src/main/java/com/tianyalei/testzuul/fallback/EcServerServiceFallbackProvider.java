@@ -48,7 +48,11 @@ public class EcServerServiceFallbackProvider implements ZuulFallbackProvider {
 
             @Override
             public InputStream getBody() throws IOException {
-                return new ByteArrayInputStream("Service-ec-server不可用".getBytes());
+                return new ByteArrayInputStream(("Service-server is gone away，please Contact wuweifeng to solve the" +
+                        " " +
+                        "problem")
+                        .getBytes
+                                ());
             }
 
             @Override
