@@ -29,3 +29,6 @@ eureka:
   client:
     service-url:
       defaultZone: http://${EUREKA_SERVER}/eureka/
+hystrix:
+  metrics:
+    polling-interval-ms: 2500
