@@ -7,6 +7,7 @@ spring:
     username: ${MYSQL_NAME:root}
     password: ${MYSQL_PASS:Wu@0396110}
 zuul:
+  
   ignored-services: "*"
 #  routes:
 #    api-user:
@@ -18,8 +19,8 @@ zuul:
   host:
     maxTotalConnections: 200 #总连接数
     maxPerRouteConnections: 20  #每个路由连接数
-    socket-timeout-millis: 60000
-    connect-timeout-millis: 60000 #超时
+    socket-timeout-millis: 60000  #超时配置，注意该配置仅对使用URL路由的有效，对serviceId注册的无效
+    connect-timeout-millis: 60000 #超时配置，注意该配置仅对使用URL路由的有效，对serviceId注册的无效
   add-host-header: true
 
   #prefix: /api  #为所有匹配增加前缀
@@ -29,6 +30,13 @@ eureka:
   client:
     service-url:
       defaultZone: http://${EUREKA_SERVER}/eureka/
+ribbon:
+  ReadTimeout: 5000
+  SocketTimeout: 5000
 hystrix:
-  metrics:
-    polling-interval-ms: 2500
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
