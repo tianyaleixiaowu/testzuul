@@ -34,12 +34,12 @@ eureka:
     service-url:
       defaultZone: http://${EUREKA_SERVER}/eureka/
 ribbon:
-  ReadTimeout: 5000  #请求处理的超时时间
+  ReadTimeout: 1000  #请求处理的超时时间
   ConnectTimeout: 400  #请求连接的超时时间
-  SocketTimeout: 5000
+  SocketTimeout: 1000
   OkToRetryOnAllOperations: true  #对所有请求都开启重试
   MaxAutoRetries: 0  #对当前服务的重试次数（如果404，则再重试MaxAutoRetries次，如果还是404，则切换到其他服务)
-  MaxAutoRetriesNextServer: 1  #切换服务的次数，只切换一次服务，不行就拉倒
+  MaxAutoRetriesNextServer: 2  #切换服务的次数，只切换一次服务，不行就拉倒
 hystrix:
   command:
     default:
