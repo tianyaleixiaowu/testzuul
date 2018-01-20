@@ -6,10 +6,6 @@ spring:
     url: jdbc:mysql://${MYSQL_IP_PORT:5996933a901a7.bj.cdb.myqcloud.com:5326}/zuul?autoReconnect=true&useUnicode=true&characterEncoding=utf8
     username: ${MYSQL_NAME:root}
     password: ${MYSQL_PASS:Wu@0396110}
-  cloud:
-    loadbalancer:
-      retry:
-        enabled: true #开启重试
 zuul:
   ignored-services: "*"
 #  routes:
@@ -25,6 +21,7 @@ zuul:
     socket-timeout-millis: 60000  #超时配置，注意该配置仅对使用URL路由的有效，对serviceId注册的无效
     connect-timeout-millis: 60000 #超时配置，注意该配置仅对使用URL路由的有效，对serviceId注册的无效
   add-host-header: true
+  retryable: true
 
   #prefix: /api  #为所有匹配增加前缀
 eureka:
@@ -34,12 +31,13 @@ eureka:
     service-url:
       defaultZone: http://${EUREKA_SERVER}/eureka/
 ribbon:
-  ReadTimeout: 1000  #请求处理的超时时间
-  ConnectTimeout: 400  #请求连接的超时时间
-  SocketTimeout: 1000
-  OkToRetryOnAllOperations: true  #对所有请求都开启重试
-  MaxAutoRetries: 0  #对当前服务的重试次数（如果404，则再重试MaxAutoRetries次，如果还是404，则切换到其他服务)
+  ReadTimeout: 500  #请求处理的超时时间
+  ConnectTimeout: 500  #请求连接的超时时间
+  SocketTimeout: 500
+  #OkToRetryOnAllOperations: true  #对所有请求都开启重试
+  MaxAutoRetries: 1  #对当前服务的重试次数（如果404，则再重试MaxAutoRetries次，如果还是404，则切换到其他服务)
   MaxAutoRetriesNextServer: 2  #切换服务的次数，只切换一次服务，不行就拉倒
+  retryableStatusCodes: 404,502,500,408
 hystrix:
   command:
     default:
