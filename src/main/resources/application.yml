@@ -31,7 +31,7 @@ eureka:
     service-url:
       defaultZone: http://${EUREKA_SERVER}/eureka/
 ribbon:
-  ReadTimeout: 500  #请求处理的超时时间
+  ReadTimeout: 5000  #请求处理的超时时间
   ConnectTimeout: 500  #请求连接的超时时间
   SocketTimeout: 500
   #OkToRetryOnAllOperations: true  #对所有请求都开启重试
