@@ -3,9 +3,11 @@ spring:
     name: zuul
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://${MYSQL_IP_PORT:5996933a901a7.bj.cdb.myqcloud.com:5326}/zuul?autoReconnect=true&useUnicode=true&characterEncoding=utf8
-    username: ${MYSQL_NAME:root}
-    password: ${MYSQL_PASS:Wu@0396110}
+    url: jdbc:mysql://${MYSQL_IP_PORT}/zuul?autoReconnect=true&useUnicode=true&characterEncoding=utf8
+    username: ${MYSQL_NAME}
+    password: ${MYSQL_PASS}
+  profiles:
+    active: ${ENV}
 zuul:
   ignored-services: "*"
 #  routes:
