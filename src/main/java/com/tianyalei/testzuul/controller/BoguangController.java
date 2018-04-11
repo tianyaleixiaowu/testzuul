@@ -1,12 +1,14 @@
 package com.tianyalei.testzuul.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author wuweifeng wrote on 2018/4/11.
  */
 @RestController
+@RequestMapping({"", "/"})
 public class BoguangController {
 
     @GetMapping
